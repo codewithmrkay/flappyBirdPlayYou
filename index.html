@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- custome img for fun -->
+    <div id="gameContainer">
+        <label for="imageUpload" id="uploadLabel">Upload Image</label>
+        <input type="file" id="imageUpload" accept="image/*">
+        <!-- Upload Button -->
+        <div id="upload-status" class="loader" style="display: none;"></div>
+
+        <!-- Image Preview -->
+        <div id="image-preview" class="img-container"></div>
+
+        <!-- Start Button -->
+        <button id="startGame" disabled>Start Game</button>
+    </div>
+    <!-- form here game is started  -->
+    <div id="game-container">
+        <div id="bird"></div>
+        <div id="score">Score:0</div>
+        <button id="start-button">Play</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
