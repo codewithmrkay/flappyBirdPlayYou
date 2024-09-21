@@ -3,7 +3,10 @@ const gameContainer = document.getElementById('game-container');
 const gameContainerImg = document.getElementById('gameContainer');
 const scoreElement = document.getElementById('score');
 const playBtn = document.getElementById('start-button');
+const rulesDiv = document.getElementById('rules');
+const ok = document.getElementById('ok');
 const startButton = document.getElementById('startGame');
+const gameOverSms = document.getElementById('gameoversms');
 
 let birdY = 300;
 let birdVelocity = 0;
@@ -18,21 +21,7 @@ let gameStarted = false;
     const uploadStatus = document.getElementById('upload-status');
     // Listen for file selection
     imageUploadInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        //
-        // const file = event.target.files[0];
-        // if (file) {
-        //     const reader = new FileReader();
-        //     reader.onload = function(e) {
-        //         bird.style.backgroundImage = `url(${e.target.result})`;
-        //         bird.style.backgroundSize = 'cover';
-        //         bird.style.backgroundColor = 'transparent';
-        //         isImageUploaded = true;
-        //         startButton.disabled = false;
-        //     }
-        //     reader.readAsDataURL(file);
-        //
-        if (file) {
+        const file = event.target.files[0];        if (file) {
             // Show loading animation
             uploadStatus.style.display = 'block';
 
@@ -61,6 +50,8 @@ let gameStarted = false;
 //*------------------------------------- uplad wala code was end
 // *------------------------------------------ move on game container
 startButton.addEventListener("click",()=>{
+    touchSfx()
+    audioPlayer.play();
     gameContainerImg.style.display='none'
     gameContainer.style.display='flex'
 })
@@ -135,12 +126,20 @@ function updateGame() {
 }
 
 function gameOver() {
+    gameOverSms.style.display='block'
+    playBtn.disabled=true
+    gameOverSfx()
+    setTimeout(() => {
+        playBtn.disabled=false
+        gameOverSms.style.display='none'
+    }, 9000);
     clearInterval(gameLoop);
     gameStarted = false;
     playBtn.style.display = 'block';
 }
 
 function startGame() {
+    startSfx()
     if (gameStarted) return;
 
     gameStarted = true;
@@ -174,3 +173,30 @@ gameContainer.addEventListener('click', () => {
         jump();
     }
 });
+// ?-------------------------------------audio section bolate
+let audioPlayer = document.querySelector("#audio-player")
+let sfxPlayer = document.querySelector("#sfx-player")
+audioPlayer.volume='0.1';
+function playBgMusic(){
+    audioPlayer.play();
+}
+function touchSfx(){
+    sfxPlayer.src='click.mp3'
+    sfxPlayer.play()
+}
+function gameOverSfx(){
+    sfxPlayer.src='moye-moye.m4a'
+    sfxPlayer.play()
+}
+function oksfx(){
+    sfxPlayer.src='pew.mp3'
+    sfxPlayer.play()
+}
+function startSfx(){
+    sfxPlayer.src='ooof.mp3'
+    sfxPlayer.play()
+}
+ok.addEventListener("click",()=>{
+    oksfx()
+rulesDiv.style.display='none'
+})
