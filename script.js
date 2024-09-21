@@ -176,6 +176,11 @@ gameContainer.addEventListener('click', () => {
 // ?-------------------------------------audio section bolate
 let audioPlayer = document.querySelector("#audio-player")
 let sfxPlayer = document.querySelector("#sfx-player")
+let insta = document.querySelector("#insta")
+insta.addEventListener("click",()=>{
+    sfxPlayer.src='pew.mp3'
+    sfxPlayer.play()
+})
 audioPlayer.volume='0.1';
 function playBgMusic(){
     audioPlayer.play();

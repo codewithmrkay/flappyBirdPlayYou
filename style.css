@@ -214,3 +214,15 @@
         color: black;
         text-transform: capitalize;
     }
+    a{
+        position: absolute;
+        z-index: 99;
+        display: block;
+        top:3%;
+        left: 10%;
+    }
+    .icon{
+        border-radius: 10px;
+        width: 40px;
+        height: 40px;
+    }
