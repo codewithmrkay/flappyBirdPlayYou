@@ -1,4 +1,5 @@
-const bird = document.getElementById('bird');
+window.onload=function(){
+    const bird = document.getElementById('bird');
 const gameContainer = document.getElementById('game-container');
 const gameContainerImg = document.getElementById('gameContainer');
 const scoreElement = document.getElementById('score');
@@ -205,3 +206,4 @@ ok.addEventListener("click",()=>{
     oksfx()
 rulesDiv.style.display='none'
 })
+}
